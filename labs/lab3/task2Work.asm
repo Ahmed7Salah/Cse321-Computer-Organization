@@ -46,16 +46,18 @@ fib:
     addi $sp, $sp, 4
 
     move $t1, $v0
+    addi $sp, $sp, -8
+    sw $t1, 0($sp)
+    sw $t2, 4($sp)
 
     
-    addi $sp, $sp, -4
-    sw $a0, 0($sp)
 
     addi $a0, $a0, -2
     jal fib
     
-    lw $a0, 0($sp)
-    addi $sp, $sp, 4
+    lw $t1, 0($sp)
+    lw $t2, 4($sp)
+    addi $sp, $sp, 8
     move $t2, $v0
 
     add $v0, $t1, $t2
